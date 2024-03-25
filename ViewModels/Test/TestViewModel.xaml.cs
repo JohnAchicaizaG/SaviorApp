@@ -5,6 +5,40 @@ using SaviorIA.Views.Menu.Tests;
 namespace SaviorIA.ViewModels.MainMenu;
 public partial class TestViewModel : ViewModelBase
 {
+
+
+	#region Propiedades
+
+    private string _groupName;
+    public string GroupName
+    {
+        get { return _groupName; }
+        set
+        {
+            if (_groupName != value)
+            {
+                _groupName = value;
+                OnPropertyChanged(nameof(GroupName));
+            }
+        }
+    }
+
+    private string _selection;
+    public string Selection
+    {
+        get { return _selection; }
+        set
+        {
+            if (_selection != value)
+            {
+                _selection = value;
+                OnPropertyChanged(nameof(Selection));
+            }
+        }
+    }
+	#endregion
+
+
 	#region Comandos
 	Command _goToBeck;
 	public Command GoToBeckCommand
@@ -17,7 +51,11 @@ public partial class TestViewModel : ViewModelBase
 	{
 		get { return _goToSadPerson ??= new Command(() => GoToSadPerson(), () => !IsBusy); }
 	}
-	#endregion 
+
+
+
+    
+	#endregion
 
 
 	private void GoToBeck()
